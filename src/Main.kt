@@ -10,11 +10,11 @@ fun main(args: Array<String>){
     val mono3 = AlgebraicMonomial(variable3)
     val mono4 = AlgebraicMonomial(variable4)
 
-    mono1 mult mono2
-    mono2 mult mono1
-    mono1 sum mono2
-    mono1 mult mono3
-    mono1 mult mono3
+    mono1 * mono2
+    mono2 * mono1
+    mono1 + mono2
+    mono1 * mono3
+    mono1 * mono3
 
     println(mono1.toString())
 }

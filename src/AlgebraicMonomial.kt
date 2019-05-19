@@ -1,4 +1,4 @@
-class AlgebraicMonomial() {
+class AlgebraicMonomial() : Arithmetic<AlgebraicMonomial>{
     private var coeff : Int = 1
     private var sequence : HashMap<Variable,Int> = HashMap()
 
@@ -6,25 +6,25 @@ class AlgebraicMonomial() {
         sequence[variable] = 1
     }
 
-    infix fun mult(monomial : AlgebraicMonomial){
-        coeff *= monomial.coeff
-        for( variable : Variable in monomial.sequence.keys) {
+    override operator fun times(elem : AlgebraicMonomial){
+        coeff *= elem.coeff
+        for( variable : Variable in elem.sequence.keys) {
             if (sequence.containsKey(variable)){
-                if(sequence[variable] != null && monomial.sequence[variable] != null){
-                    sequence[variable] = sequence[variable] as Int + monomial.sequence[variable] as Int
+                if(sequence[variable] != null && elem.sequence[variable] != null){
+                    sequence[variable] = sequence[variable] as Int + elem.sequence[variable] as Int
                 }
             }else{
-                if(monomial.sequence[variable] != null) {
-                    sequence.put(variable, monomial.sequence[variable] as Int)
+                if(elem.sequence[variable] != null) {
+                    sequence[variable] = elem.sequence[variable] as Int
                 }
             }
         }
     }
 
-    infix fun sum(monomial: AlgebraicMonomial){
-        for( variable : Variable in monomial.sequence.keys) {
-            if(sequence.containsKey(variable) && sequence[variable] as Int == monomial.sequence[variable] as Int){
-                coeff += monomial.coeff
+    override operator fun plus(elem: AlgebraicMonomial){
+        for( variable : Variable in elem.sequence.keys) {
+            if(sequence.containsKey(variable) && sequence[variable] as Int == elem.sequence[variable] as Int){
+                coeff += elem.coeff
             }
         }
     }
@@ -33,11 +33,11 @@ class AlgebraicMonomial() {
         var seqString = ""
         for( variable : Variable in sequence.keys) {
             seqString += if(sequence[variable] == 1) {
-                variable.toString() + " "
+                "$variable "
             }else{
                 variable.toString() + "^" + sequence[variable] + " "
             }
         }
-        return coeff.toString() + "\\ " + seqString
+        return "$coeff\\ $seqString"
     }
 }

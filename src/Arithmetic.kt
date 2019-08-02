@@ -1,4 +1,4 @@
 interface Arithmetic<T> {
-    operator fun plus(elem : T)
-    operator fun times(elem : T)
+    operator fun plus(elem : T) : T
+    operator fun times(elem : T) : T
 }

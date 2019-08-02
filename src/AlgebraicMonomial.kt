@@ -1,43 +1,82 @@
-class AlgebraicMonomial() : Arithmetic<AlgebraicMonomial>{
-    private var coeff : Int = 1
-    private var sequence : HashMap<Variable,Int> = HashMap()
+import java.lang.RuntimeException
+import java.lang.StringBuilder
 
-    constructor(variable : Variable) : this(){
+class AlgebraicMonomial() : Arithmetic<AlgebraicMonomial>, Cloneable {
+    private var coefficient: Int = 1
+    private var sequence: MutableMap<Variable, Int> = HashMap()
+
+    constructor(variable: Variable) : this() {
         sequence[variable] = 1
     }
 
-    override operator fun times(elem : AlgebraicMonomial){
-        coeff *= elem.coeff
-        for( variable : Variable in elem.sequence.keys) {
-            if (sequence.containsKey(variable)){
-                if(sequence[variable] != null && elem.sequence[variable] != null){
-                    sequence[variable] = sequence[variable] as Int + elem.sequence[variable] as Int
-                }
-            }else{
-                if(elem.sequence[variable] != null) {
-                    sequence[variable] = elem.sequence[variable] as Int
-                }
+    override operator fun times(elem: AlgebraicMonomial): AlgebraicMonomial {
+        val monomial = clone()
+        monomial.coefficient *= elem.coefficient
+        for (variable: Variable in elem.sequence.keys) {
+            monomial.sequence[variable] = if (monomial.sequence.containsKey(variable)) {
+                monomial.sequence[variable]!! + elem.sequence[variable]!!
+            } else {
+                elem.sequence[variable]!!
             }
         }
+        return monomial
     }
 
-    override operator fun plus(elem: AlgebraicMonomial){
-        for( variable : Variable in elem.sequence.keys) {
-            if(sequence.containsKey(variable) && sequence[variable] as Int == elem.sequence[variable] as Int){
-                coeff += elem.coeff
-            }
+    override operator fun plus(elem: AlgebraicMonomial): AlgebraicMonomial {
+        var fault = false
+        var temp: Boolean
+        val monomial = clone()
+        for (variable: Variable in elem.sequence.keys) {
+            temp = sequence.containsKey(variable) &&
+                    sequence[variable] == elem.sequence[variable]
+            fault = fault && !temp
         }
+        if (!fault) monomial.coefficient += elem.coefficient
+        else throw RuntimeException("Summation of the different algebraic monomials")
+        return monomial
+    }
+
+    override fun clone(): AlgebraicMonomial {
+        val monomial = AlgebraicMonomial()
+        monomial.coefficient = this.coefficient
+        monomial.sequence = this.sequence.toMutableMap()
+        return monomial
     }
 
     override fun toString(): String {
-        var seqString = ""
-        for( variable : Variable in sequence.keys) {
-            seqString += if(sequence[variable] == 1) {
-                "$variable "
-            }else{
-                variable.toString() + "^" + sequence[variable] + " "
-            }
+        val seqString = StringBuilder()
+        if (coefficient != 1) seqString.append("$coefficient\\ ")
+        for ((i, variable: Variable) in sequence.keys.withIndex()) {
+            seqString.append(
+                if (sequence[variable] == 1) {
+                    "$variable"
+                } else {
+                    "$variable^${sequence[variable]}"
+                }
+            )
+            if (i != sequence.keys.size - 1) seqString.append(" ")
         }
-        return "$coeff\\ $seqString"
+        return seqString.toString()
+    }
+
+    fun hasVariablesAllEqual(monomial : AlgebraicMonomial): Boolean{
+        if (this.sequence.size != monomial.sequence.size) return false
+        for (variable: Variable in monomial.sequence.keys) {
+            if(!this.sequence.containsKey(variable)) return false
+            if(this.sequence[variable] != monomial.sequence[variable]) return false
+        }
+        return true
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if(other !is AlgebraicMonomial) return false
+        return this.coefficient == other.coefficient &&
+                this.sequence.equals(other.sequence)
+    }
+
+    override fun hashCode(): Int {
+        var result = coefficient
+        result = 31 * result + sequence.hashCode()
+        return result
     }
 }

@@ -31,4 +31,22 @@ fun main(args: Array<String>){
     println(poly1.toString())
     println(poly2.toString())
     println(poly3.toString())
+
+    val cli1 = Variable('H',"1")
+    val cli2 = Variable('H',"2")
+    val cli3 = Variable('H',"3")
+    val cli4 = Variable('H',"4")
+
+    var monoCli1 = CliffordMonomial(cli1)
+    var monoCli2 = CliffordMonomial(cli2)
+    var monoCli3 = CliffordMonomial(cli3)
+    var monoCli4 = CliffordMonomial(cli4)
+
+    monoCli1 = monoCli1 * monoCli2 * monoCli3
+    println(monoCli1)
+    monoCli1 *= monoCli3
+    println(monoCli1)
+    monoCli2 = monoCli2 * monoCli3 * monoCli4
+    monoCli1 *= monoCli2
+    println(monoCli1 * monoCli2)
 }

@@ -10,18 +10,17 @@ class AlgebraicPolynom() : Arithmetic<AlgebraicPolynom>, Cloneable {
         for (monomial: AlgebraicMonomial in elem.polynom) {
             polynom.polynom.add(monomial)
         }
-        return polynom
+        return polynom.sumSimilar()
     }
 
     override operator fun times(elem: AlgebraicPolynom): AlgebraicPolynom {
-        var polynom = AlgebraicPolynom()
+        val polynom = AlgebraicPolynom()
         for (monomialThis: AlgebraicMonomial in this.polynom) {
             for (monomialThat: AlgebraicMonomial in elem.polynom) {
                 polynom.polynom.add(monomialThis * monomialThat)
             }
         }
-        polynom = polynom.sumSimilar()
-        return polynom
+        return polynom.sumSimilar()
     }
 
     override fun clone(): AlgebraicPolynom {

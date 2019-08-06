@@ -3,7 +3,7 @@ import java.lang.StringBuilder
 import java.util.*
 
 class CliffordMonomial() : Arithmetic<CliffordMonomial>, Cloneable {
-    private var sequence: MutableSet<Variable> = LinkedHashSet()
+    private var sequence: MutableList<Variable> = ArrayList()
     private var sign: Boolean = true
 
     constructor(variable: Variable) : this() {
@@ -30,7 +30,7 @@ class CliffordMonomial() : Arithmetic<CliffordMonomial>, Cloneable {
 
     override fun clone(): CliffordMonomial {
         val mono = CliffordMonomial()
-        mono.sequence = this.sequence.toMutableSet()
+        mono.sequence = this.sequence.toMutableList()
         return mono
     }
 

@@ -27,6 +27,7 @@ fun main(args: Array<String>){
     poly3 += poly4
     poly3 *= poly3
     poly3 *= poly3
+    poly3 *= poly3
 
     println(poly1.toString())
     println(poly2.toString())

@@ -9,14 +9,14 @@ class Monomial() : Multiplyable<Monomial>, Summable<Monomial>, Zeroable, Cloneab
         clifford = cliff
     }
 
-    override fun times(elem: Monomial): Monomial {
+    override operator fun times(elem: Monomial): Monomial {
         val mono = Monomial()
         mono.algebraic = this.algebraic * elem.algebraic
         mono.clifford = this.clifford * elem.clifford
         return mono
     }
 
-    override fun plus(elem: Monomial): Monomial {
+    override operator fun plus(elem: Monomial): Monomial {
         val mono = Monomial()
         if (this.clifford.hasAllVariablesEqual(elem.clifford)) {
             mono.algebraic = this.algebraic + elem.algebraic
@@ -25,7 +25,7 @@ class Monomial() : Multiplyable<Monomial>, Summable<Monomial>, Zeroable, Cloneab
         return mono
     }
 
-    override fun minus(elem: Monomial): Monomial {
+    override operator fun minus(elem: Monomial): Monomial {
         val mono = Monomial()
         if (this.clifford.hasAllVariablesEqual(elem.clifford)) {
             mono.algebraic = this.algebraic - elem.algebraic

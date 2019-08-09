@@ -1,9 +1,9 @@
 fun main(args: Array<String>){
 
-    val variable1 = Variable('a',"1")
-    val variable2 = Variable('a',"2")
-    val variable3 = Variable('a',"3")
-    val variable4 = Variable('a',"4")
+    val variable1 = Variable('a',1)
+    val variable2 = Variable('a',2)
+    val variable3 = Variable('a',3)
+    val variable4 = Variable('a',4)
 
     var mono1 = AlgebraicMonomial(variable1)
     var mono2 = AlgebraicMonomial(variable2)
@@ -37,10 +37,10 @@ fun main(args: Array<String>){
     println(poly2.toString())
     println(poly3.toString())
 
-    val cli1 = Variable('H',"1")
-    val cli2 = Variable('H',"2")
-    val cli3 = Variable('H',"3")
-    val cli4 = Variable('H',"4")
+    val cli1 = Variable('H',1)
+    val cli2 = Variable('H',2)
+    val cli3 = Variable('H',3)
+    val cli4 = Variable('H',4)
 
     var monoCli1 = CliffordMonomial(cli1)
     var monoCli2 = CliffordMonomial(cli2)

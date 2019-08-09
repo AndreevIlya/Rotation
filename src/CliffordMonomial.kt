@@ -37,4 +37,12 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
         }
         return seqString.toString()
     }
+
+    fun hasAllVariablesEqual(mono: CliffordMonomial): Boolean{
+        if (this.sequence.size != mono.sequence.size) return false
+        for (variable: Variable in mono.sequence) {
+            if(!this.sequence.contains(variable)) return false
+        }
+        return true
+    }
 }

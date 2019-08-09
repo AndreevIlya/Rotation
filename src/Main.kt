@@ -32,8 +32,6 @@ fun main(args: Array<String>){
     poly2 *= poly1
     poly3 -= poly4
     poly3 *= poly3
-    poly3 *= poly3
-    poly3 *= poly3
 
     println(poly1.toString())
     println(poly2.toString())
@@ -50,10 +48,12 @@ fun main(args: Array<String>){
     var monoCli4 = CliffordMonomial(cli4)
 
     monoCli1 = monoCli1 * monoCli2 * monoCli3
-    println(monoCli1)
-    monoCli1 *= monoCli3
-    println(monoCli1)
     monoCli2 = monoCli2 * monoCli3 * monoCli4
-    monoCli1 *= monoCli2
-    println(monoCli1 * monoCli2)
+
+    var mono_1 = Monomial(poly2,monoCli1)
+    var mono_2 = Monomial(poly3,monoCli1)
+
+    println(mono_1 + mono_2)
+
+
 }

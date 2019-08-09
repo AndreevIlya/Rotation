@@ -1,7 +1,4 @@
-import java.lang.RuntimeException
-import java.lang.StringBuilder
-
-class AlgebraicMonomial() : Arithmetic<AlgebraicMonomial>, Cloneable {
+class AlgebraicMonomial() : Multiplyable<AlgebraicMonomial>,Summable<AlgebraicMonomial>,Zeroable, Cloneable {
     private var coefficient: Int = 1
     private var sequence: MutableMap<Variable, Int> = HashMap()
 
@@ -23,6 +20,14 @@ class AlgebraicMonomial() : Arithmetic<AlgebraicMonomial>, Cloneable {
     }
 
     override operator fun plus(elem: AlgebraicMonomial): AlgebraicMonomial {
+        return plusMinus(0,elem)
+    }
+
+    override operator fun minus(elem: AlgebraicMonomial): AlgebraicMonomial {
+        return plusMinus(1,elem)
+    }
+
+    private fun plusMinus(action: Int,elem: AlgebraicMonomial): AlgebraicMonomial{
         var fault = false
         var temp: Boolean
         val monomial = clone()
@@ -31,9 +36,19 @@ class AlgebraicMonomial() : Arithmetic<AlgebraicMonomial>, Cloneable {
                     sequence[variable] == elem.sequence[variable]
             fault = fault && !temp
         }
-        if (!fault) monomial.coefficient += elem.coefficient
-        else throw RuntimeException("Summation of the different algebraic monomials")
+        if (!fault) {
+            if (action == 0) monomial.coefficient += elem.coefficient
+            else monomial.coefficient -= elem.coefficient
+        } else throw RuntimeException("Summation of the different algebraic monomials")
         return monomial
+    }
+
+    override fun isZero(): Boolean {
+        return this.coefficient == 0
+    }
+
+    fun isPositive(): Boolean {
+        return this.coefficient > 0
     }
 
     override fun clone(): AlgebraicMonomial {
@@ -66,6 +81,11 @@ class AlgebraicMonomial() : Arithmetic<AlgebraicMonomial>, Cloneable {
             if(this.sequence[variable] != monomial.sequence[variable]) return false
         }
         return true
+    }
+
+    fun toggleSign(): AlgebraicMonomial{
+        this.coefficient = -this.coefficient
+        return this
     }
 
     override fun equals(other: Any?): Boolean {

@@ -22,9 +22,15 @@ fun main(args: Array<String>){
     var poly3 = AlgebraicPolynom(mono3)
     var poly4 = AlgebraicPolynom(mono4)
 
+    var poly5 = AlgebraicPolynom(AlgebraicMonomial(variable1)) + AlgebraicPolynom(AlgebraicMonomial(variable2))
+    println(poly5)
+    var poly6 = AlgebraicPolynom(AlgebraicMonomial(variable1)) - AlgebraicPolynom(AlgebraicMonomial(variable2))
+    println(poly6)
+    println((poly5 * poly6).toString() + "\n")
+
     poly1 += poly2
     poly2 *= poly1
-    poly3 += poly4
+    poly3 -= poly4
     poly3 *= poly3
     poly3 *= poly3
     poly3 *= poly3

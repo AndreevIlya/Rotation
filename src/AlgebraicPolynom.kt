@@ -1,4 +1,4 @@
-class AlgebraicPolynom() : Arithmetic<AlgebraicPolynom>, Cloneable {
+class AlgebraicPolynom() : Multiplyable<AlgebraicPolynom>, Summable<AlgebraicPolynom>, Zeroable, Cloneable {
     private var polynom: MutableList<AlgebraicMonomial> = ArrayList()
 
     constructor(monomial: AlgebraicMonomial) : this() {
@@ -13,6 +13,14 @@ class AlgebraicPolynom() : Arithmetic<AlgebraicPolynom>, Cloneable {
         return polynom.sumSimilar()
     }
 
+    override operator fun minus(elem: AlgebraicPolynom): AlgebraicPolynom {
+        val polynom = clone()
+        for (monomial: AlgebraicMonomial in elem.polynom) {
+            polynom.polynom.add(monomial.toggleSign())
+        }
+        return polynom.sumSimilar()
+    }
+
     override operator fun times(elem: AlgebraicPolynom): AlgebraicPolynom {
         val polynom = AlgebraicPolynom()
         for (monomialThis: AlgebraicMonomial in this.polynom) {
@@ -21,6 +29,10 @@ class AlgebraicPolynom() : Arithmetic<AlgebraicPolynom>, Cloneable {
             }
         }
         return polynom.sumSimilar()
+    }
+
+    override fun isZero(): Boolean {
+        return polynom.size == 0
     }
 
     override fun clone(): AlgebraicPolynom {
@@ -32,10 +44,16 @@ class AlgebraicPolynom() : Arithmetic<AlgebraicPolynom>, Cloneable {
     override fun toString(): String {
         val seqString = StringBuilder()
         for ((i, monomial: AlgebraicMonomial) in this.polynom.withIndex()) {
-            seqString.append(
-                monomial.toString()
-            )
-            if (i != this.polynom.size - 1) seqString.append(" + ")
+            val monoString = StringBuilder()
+            if (monomial.isPositive()){
+                if (i != 0) monoString.append(" + ")
+                monoString.append(monomial.toString())
+            } else {
+                monoString.append(" - ")
+                monoString.append(monomial.toggleSign().toString())
+                monomial.toggleSign()
+            }
+            seqString.append(monoString)
         }
         return seqString.toString()
     }
@@ -56,7 +74,7 @@ class AlgebraicPolynom() : Arithmetic<AlgebraicPolynom>, Cloneable {
                 }
                 j--
             }
-            polynom.polynom.add(mono)
+            if (!mono.isZero()) polynom.polynom.add(mono)
         }
         return polynom
     }

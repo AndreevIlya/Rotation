@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fe5139e-a18b-48b8-9894-be23370faa75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Summable.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Zeroable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Arithmetic.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Multiplyable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CliffordMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CliffordMonomial.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
     </list>
@@ -19,9 +23,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin Interface" />
         <option value="Kotlin File" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Interface" />
       </list>
     </option>
   </component>
@@ -112,7 +116,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565039253437</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Some small changes.">
+      <created>1565127456202</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1565127456202</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,7 +131,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -130,7 +143,8 @@
     <MESSAGE value="Arithmetic interface added." />
     <MESSAGE value="Arithmetic polynom class realised." />
     <MESSAGE value="Clifford monomial class realised." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clifford monomial class realised." />
+    <MESSAGE value="Some small changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Some small changes." />
   </component>
   <component name="masterDetails">
     <states>

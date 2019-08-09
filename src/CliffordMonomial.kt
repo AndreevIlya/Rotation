@@ -1,17 +1,11 @@
-import java.lang.RuntimeException
-import java.lang.StringBuilder
 import java.util.*
 
-class CliffordMonomial() : Arithmetic<CliffordMonomial>, Cloneable {
+class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
     private var sequence: MutableList<Variable> = ArrayList()
     private var sign: Boolean = true
 
     constructor(variable: Variable) : this() {
         sequence.add(variable)
-    }
-
-    override fun plus(elem: CliffordMonomial): CliffordMonomial {
-        throw RuntimeException("No plus method for Clifford monomials.")
     }
 
     override fun times(elem: CliffordMonomial): CliffordMonomial {

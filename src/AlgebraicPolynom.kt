@@ -16,9 +16,17 @@ class AlgebraicPolynom() : Multiplyable<AlgebraicPolynom>, Summable<AlgebraicPol
     override operator fun minus(elem: AlgebraicPolynom): AlgebraicPolynom {
         val polynom = clone()
         for (monomial: AlgebraicMonomial in elem.polynom) {
-            polynom.polynom.add(monomial.toggleSign())
+            polynom.polynom.add(-monomial)
         }
         return polynom.sumSimilar()
+    }
+
+    operator fun unaryMinus(): AlgebraicPolynom{
+        val polynom = AlgebraicPolynom()
+        for (monomial: AlgebraicMonomial in this.polynom) {
+            polynom.polynom.add(-monomial)
+        }
+        return polynom
     }
 
     override operator fun times(elem: AlgebraicPolynom): AlgebraicPolynom {
@@ -35,7 +43,7 @@ class AlgebraicPolynom() : Multiplyable<AlgebraicPolynom>, Summable<AlgebraicPol
         return polynom.size == 0
     }
 
-    override fun clone(): AlgebraicPolynom {
+    public override fun clone(): AlgebraicPolynom {
         val polynom = AlgebraicPolynom()
         polynom.polynom = this.polynom.toMutableList()
         return polynom
@@ -50,8 +58,7 @@ class AlgebraicPolynom() : Multiplyable<AlgebraicPolynom>, Summable<AlgebraicPol
                 monoString.append(monomial.toString())
             } else {
                 monoString.append(" - ")
-                monoString.append(monomial.toggleSign().toString())
-                monomial.toggleSign()
+                monoString.append((-monomial).toString())
             }
             seqString.append(monoString)
         }
@@ -68,7 +75,7 @@ class AlgebraicPolynom() : Multiplyable<AlgebraicPolynom>, Summable<AlgebraicPol
             j = this.polynom.size - 1
             mono = monomial
             while (j > i) {
-                if (monomial.hasVariablesAllEqual(this.polynom[j])) {
+                if (monomial.hasAllVariablesEqual(this.polynom[j])) {
                     mono += this.polynom[j]
                     out.add(j)
                 }

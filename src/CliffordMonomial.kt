@@ -22,9 +22,19 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
         return mono
     }
 
-    override fun clone(): CliffordMonomial {
+    public override fun clone(): CliffordMonomial {
         val mono = CliffordMonomial()
         mono.sequence = this.sequence.toMutableList()
+        return mono
+    }
+
+    fun isPositive(): Boolean{
+        return sign
+    }
+
+    operator fun unaryMinus():CliffordMonomial{
+        val mono = clone()
+        sign = !sign
         return mono
     }
 

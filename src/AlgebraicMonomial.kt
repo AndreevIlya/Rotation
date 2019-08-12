@@ -43,6 +43,12 @@ class AlgebraicMonomial() : Multiplyable<AlgebraicMonomial>,Summable<AlgebraicMo
         return monomial
     }
 
+    operator fun unaryMinus(): AlgebraicMonomial{
+        val mono = clone()
+        mono.coefficient = -mono.coefficient
+        return mono
+    }
+
     override fun isZero(): Boolean {
         return this.coefficient == 0
     }
@@ -74,7 +80,7 @@ class AlgebraicMonomial() : Multiplyable<AlgebraicMonomial>,Summable<AlgebraicMo
         return seqString.toString()
     }
 
-    fun hasVariablesAllEqual(monomial : AlgebraicMonomial): Boolean{
+    fun hasAllVariablesEqual(monomial : AlgebraicMonomial): Boolean{
         if (this.sequence.size != monomial.sequence.size) return false
         for (variable: Variable in monomial.sequence.keys) {
             if(!this.sequence.containsKey(variable)) return false
@@ -83,15 +89,10 @@ class AlgebraicMonomial() : Multiplyable<AlgebraicMonomial>,Summable<AlgebraicMo
         return true
     }
 
-    fun toggleSign(): AlgebraicMonomial{
-        this.coefficient = -this.coefficient
-        return this
-    }
-
     override fun equals(other: Any?): Boolean {
         if(other !is AlgebraicMonomial) return false
         return this.coefficient == other.coefficient &&
-                this.sequence.equals(other.sequence)
+                this.sequence == other.sequence
     }
 
     override fun hashCode(): Int {

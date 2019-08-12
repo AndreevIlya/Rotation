@@ -47,13 +47,23 @@ fun main(args: Array<String>){
     var monoCli3 = CliffordMonomial(cli3)
     var monoCli4 = CliffordMonomial(cli4)
 
-    monoCli1 = monoCli1 * monoCli2 * monoCli3
-    monoCli2 = monoCli2 * monoCli3 * monoCli4
+    monoCli1 = monoCli1 * monoCli2
+    monoCli2 = monoCli2 * monoCli3
 
-    var mono_1 = Monomial(poly2,monoCli1)
-    var mono_2 = Monomial(poly3,monoCli1)
+    var monomial1 = Monomial(poly5,monoCli1)
+    var monomial2 = Monomial(poly6,monoCli2)
 
-    println(mono_1 + mono_2)
+    println(monomial1 * monomial2)
+
+    var polynom1 = Polynom(monomial1)
+    var polynom2 = Polynom(monomial2)
+    var polynom3 = polynom1 + polynom2
+    var polynom4 = polynom1 - polynom2
+    var polynom5 = polynom3 * polynom4
+
+    println(polynom3)
+    println(polynom4)
+    println(polynom5)
 
 
 }

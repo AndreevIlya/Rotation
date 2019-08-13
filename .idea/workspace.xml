@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1fe5139e-a18b-48b8-9894-be23370faa75" name="Default Changelist" comment="Minor additions.">
-      <change afterPath="$PROJECT_DIR$/src/Polynom.kt" afterDir="false" />
+    <list default="true" id="1fe5139e-a18b-48b8-9894-be23370faa75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CliffordMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CliffordMonomial.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Monomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monomial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Variable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variable.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,20 +24,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>toM</find>
-      <find>equa</find>
-    </findStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-6" />
-    <option name="y" value="576" />
-    <option name="width" value="1294" />
-    <option name="height" value="451" />
   </component>
   <component name="ProjectId" id="1P4GKNRvWsJTqG2VyEtyO8I00OX" />
   <component name="ProjectLevelVcsManager">
@@ -143,7 +127,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565379430946</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Polynom class written.">
+      <created>1565648454511</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1565648454511</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -167,7 +158,8 @@
     <MESSAGE value="Interfaces remanaged." />
     <MESSAGE value="Monomial class that uses both clifford and algebraic classes made." />
     <MESSAGE value="Minor additions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Minor additions." />
+    <MESSAGE value="Polynom class written." />
+    <option name="LAST_COMMIT_MESSAGE" value="Polynom class written." />
   </component>
   <component name="masterDetails">
     <states>

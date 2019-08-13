@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.Comparator
 
 class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
     private var sequence: MutableList<Variable> = ArrayList()
@@ -10,16 +11,17 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
 
     override fun times(elem: CliffordMonomial): CliffordMonomial {
         val mono = clone()
+        var index: Int
         for (monoThat: Variable in elem.sequence) {
-            val index: Int = mono.sequence.indexOf(monoThat)
+            index = mono.sequence.indexOf(monoThat)
             if (index == -1) {
                 mono.sequence.add(monoThat)
             } else {
-                if ( (mono.sequence.size - index) % 2 == 1) mono.sign = !mono.sign
+                if ((mono.sequence.size - index) % 2 == 1) mono.sign = !mono.sign
                 mono.sequence.remove(monoThat)
             }
         }
-        return mono
+        return mono.align()
     }
 
     public override fun clone(): CliffordMonomial {
@@ -28,11 +30,11 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
         return mono
     }
 
-    fun isPositive(): Boolean{
+    fun isPositive(): Boolean {
         return sign
     }
 
-    operator fun unaryMinus():CliffordMonomial{
+    operator fun unaryMinus(): CliffordMonomial {
         val mono = clone()
         sign = !sign
         return mono
@@ -48,11 +50,26 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
         return seqString.toString()
     }
 
-    fun hasAllVariablesEqual(mono: CliffordMonomial): Boolean{
+    fun hasAllVariablesEqual(mono: CliffordMonomial): Boolean {
         if (this.sequence.size != mono.sequence.size) return false
         for (variable: Variable in mono.sequence) {
-            if(!this.sequence.contains(variable)) return false
+            if (!this.sequence.contains(variable)) return false
         }
         return true
+    }
+
+    private fun align(): CliffordMonomial {
+        val mono = this
+        mono.sequence.sortWith(Comparator { o1, o2 ->
+            when {
+                o1 > o2 -> {
+                    mono.sign = !mono.sign
+                    1
+                }
+                o1 == o2 -> 0
+                else -> -1
+            }
+        })
+        return mono
     }
 }

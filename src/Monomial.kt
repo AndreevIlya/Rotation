@@ -4,6 +4,10 @@ class Monomial() : Multiplyable<Monomial>, Summable<Monomial>, Zeroable, Cloneab
     private var algebraic: AlgebraicPolynom = AlgebraicPolynom()
     private var clifford: CliffordMonomial = CliffordMonomial()
 
+    constructor(alg: AlgebraicPolynom) : this() {
+        algebraic = alg
+    }
+
     constructor(alg: AlgebraicPolynom, cliff: CliffordMonomial) : this() {
         algebraic = alg
         clifford = cliff

@@ -1,8 +1,7 @@
 import java.util.*
-import kotlin.Comparator
 
 class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
-    private var sequence: MutableList<Variable> = ArrayList()
+    private var sequence: LinkedList<Variable> = LinkedList()
     private var sign: Boolean = true
 
     constructor(variable: Variable) : this() {
@@ -11,22 +10,47 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
 
     override fun times(elem: CliffordMonomial): CliffordMonomial {
         val mono = clone()
-        var index: Int
-        for (monoThat: Variable in elem.sequence) {
-            index = mono.sequence.indexOf(monoThat)
-            if (index == -1) {
-                mono.sequence.add(monoThat)
-            } else {
-                if ((mono.sequence.size - index) % 2 == 1) mono.sign = !mono.sign
-                mono.sequence.remove(monoThat)
-            }
+        if (mono.sequence.isEmpty()){
+            mono.sequence = elem.sequence
+            return mono
         }
-        return mono.align()
+        var tempSequence: LinkedList<Variable>
+        for (monoThat: Variable in elem.sequence) {
+            if (!mono.sequence.isEmpty()) {
+                var check = true
+                val li: Iterator<Variable> = mono.sequence.descendingIterator()
+                tempSequence = LinkedList()
+                while (li.hasNext()) {
+                    val monoThis = li.next()
+                    if (check) {
+                        when {
+                            monoThis == monoThat -> {
+                                mono.sign = !mono.sign
+                                check = false
+                            }
+                            monoThis > monoThat -> {
+                                tempSequence.add(monoThis)
+                                mono.sign = !mono.sign
+                            }
+                            else -> {
+                                tempSequence.add(monoThat)
+                                tempSequence.add(monoThis)
+                                check = false
+                            }
+                        }
+                    } else tempSequence.add(monoThis)
+                }
+                if (check) tempSequence.add(monoThat)
+                mono.sequence = LinkedList(tempSequence.reversed())
+            } else mono.sequence.add(monoThat)
+        }
+        return mono
     }
 
     public override fun clone(): CliffordMonomial {
         val mono = CliffordMonomial()
-        mono.sequence = this.sequence.toMutableList()
+        mono.sign = this.sign
+        mono.sequence = LinkedList(this.sequence)
         return mono
     }
 
@@ -36,7 +60,7 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
 
     operator fun unaryMinus(): CliffordMonomial {
         val mono = clone()
-        sign = !sign
+        mono.sign = !mono.sign
         return mono
     }
 
@@ -56,20 +80,5 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
             if (!this.sequence.contains(variable)) return false
         }
         return true
-    }
-
-    private fun align(): CliffordMonomial {
-        val mono = this
-        mono.sequence.sortWith(Comparator { o1, o2 ->
-            when {
-                o1 > o2 -> {
-                    mono.sign = !mono.sign
-                    1
-                }
-                o1 == o2 -> 0
-                else -> -1
-            }
-        })
-        return mono
     }
 }

@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fe5139e-a18b-48b8-9894-be23370faa75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Matrix.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Rotation/META-INF/Rotation.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Rotation/META-INF/Rotation.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CliffordMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CliffordMonomial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monomial.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Variable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variable.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +50,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Kotlin.MatrixKt">
     <configuration name="MainKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
       <module name="Rotation" />
       <option name="VM_PARAMETERS" />
@@ -61,8 +64,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MatrixKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="Rotation" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="MatrixKt" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Kotlin.MatrixKt" />
         <item itemvalue="Kotlin.MainKt" />
       </list>
     </recent_temporary>
@@ -134,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565648454511</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Clifford monomials aligned correctly.">
+      <created>1565732759936</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1565732759936</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,7 +183,19 @@
     <MESSAGE value="Monomial class that uses both clifford and algebraic classes made." />
     <MESSAGE value="Minor additions." />
     <MESSAGE value="Polynom class written." />
-    <option name="LAST_COMMIT_MESSAGE" value="Polynom class written." />
+    <MESSAGE value="Clifford monomials aligned correctly." />
+    <option name="LAST_COMMIT_MESSAGE" value="Clifford monomials aligned correctly." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/Matrix.kt</url>
+          <line>57</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="masterDetails">
     <states>

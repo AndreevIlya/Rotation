@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fe5139e-a18b-48b8-9894-be23370faa75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Matrix.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Rotation/META-INF/Rotation.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Rotation/META-INF/Rotation.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CliffordMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CliffordMonomial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Matrix.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Monomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monomial.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Variable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Polynom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Polynom.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +156,14 @@
       <option name="project" value="LOCAL" />
       <updated>1565732759936</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Bugs solved, matrix class started as a big testing environment so far.">
+      <created>1566342405393</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1566342405393</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,18 +189,8 @@
     <MESSAGE value="Minor additions." />
     <MESSAGE value="Polynom class written." />
     <MESSAGE value="Clifford monomials aligned correctly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clifford monomials aligned correctly." />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/src/Matrix.kt</url>
-          <line>57</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Bugs solved, matrix class started as a big testing environment so far." />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugs solved, matrix class started as a big testing environment so far." />
   </component>
   <component name="masterDetails">
     <states>

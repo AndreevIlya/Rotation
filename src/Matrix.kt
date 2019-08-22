@@ -48,13 +48,18 @@ class Matrix(private val dimension: Int) {
 }
 
 fun main() {
-    val xVec = Matrix(3).makeOrt('x',0)
+    val xVec = Matrix(4).makeOrt('x',0)
     //val xVec = Matrix(3).makeVector('x')
     println(xVec)
-    val leftBiVec = Matrix(3).makeBiVector('s', true)
+    val leftBiVec = Matrix(4).makeBiVector('s', true)
     println(leftBiVec)
-    val rightBiVec = Matrix(3).makeBiVector('s', false)
+    val rightBiVec = Matrix(4).makeBiVector('s', false)
     println(rightBiVec)
-    println(leftBiVec * xVec)
-    println(leftBiVec * xVec * rightBiVec)
+    //println(leftBiVec * xVec)
+    val poly = leftBiVec * xVec * rightBiVec
+    println(poly)
+    val polyVec = poly.extractVector()
+    for (algVec: AlgebraicPolynom in polyVec){
+        println(algVec)
+    }
 }

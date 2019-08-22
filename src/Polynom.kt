@@ -1,3 +1,5 @@
+import java.lang.RuntimeException
+
 class Polynom() : Multiplyable<Polynom>,Summable<Polynom>,Zeroable, Cloneable {
     private var polynom: MutableList<Monomial> = ArrayList()
 
@@ -69,5 +71,28 @@ class Polynom() : Multiplyable<Polynom>,Summable<Polynom>,Zeroable, Cloneable {
             if (!mono.isZero()) polynom.polynom.add(mono)
         }
         return polynom
+    }
+
+    fun extractVector(): List<AlgebraicPolynom>{
+        val vec: MutableList<AlgebraicPolynom> = ArrayList()
+        val cliff: MutableList<CliffordMonomial> = ArrayList()
+        val dimension = polynom.size
+        var i = 0
+        var count = 0
+        while (i < dimension) {
+            cliff.add(CliffordMonomial(Variable('H', i)))
+            i++
+        }
+        for (cliffMono: CliffordMonomial in cliff){
+            for (mono: Monomial in polynom){
+                if (mono.hasSameCliffordBase(cliffMono)){
+                    vec.add(mono.getMatchingAlgebraicPolynom(cliffMono))
+                    count++
+                    break
+                }
+            }
+        }
+        if (count == dimension) return vec
+        else throw RuntimeException("Not enough components: $count of $dimension.")
     }
 }

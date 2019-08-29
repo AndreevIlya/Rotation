@@ -30,7 +30,7 @@ class Matrix(private val dimension: Int) {
             while (j < dimension) {
                 val ort1 = CliffordMonomial(Variable('H', i))
                 val ort2 = CliffordMonomial(Variable('H', j))
-                val vec = AlgebraicPolynom(AlgebraicMonomial(Variable(letter, i * 10 + j)))
+                val vec = AlgebraicPolynom(AlgebraicMonomial(Variable(letter, "${i}_$j")))
                 val mono = Polynom(
                     Monomial(
                         if (pseudo) vec
@@ -48,18 +48,22 @@ class Matrix(private val dimension: Int) {
 }
 
 fun main() {
-    val xVec = Matrix(4).makeOrt('x',0)
-    //val xVec = Matrix(3).makeVector('x')
-    println(xVec)
-    val leftBiVec = Matrix(4).makeBiVector('s', true)
+    val xVec = Matrix(5).makeOrt('x',0)
+    val aVec = Matrix(5).makeVector('a')
+    val bVec = Matrix(5).makeVector('b')
+    println(aVec*bVec)
+    println(bVec*aVec)
+    /*println((aVec*bVec) * (bVec*aVec) - aVec*bVec * bVec*aVec)*/
+
+    val leftBiVec = Matrix(5).makeBiVector('s', true)
     println(leftBiVec)
-    val rightBiVec = Matrix(4).makeBiVector('s', false)
+    val rightBiVec = Matrix(5).makeBiVector('s', false)
     println(rightBiVec)
-    //println(leftBiVec * xVec)
-    val poly = leftBiVec * xVec * rightBiVec
+    println(leftBiVec * rightBiVec)
+    /*val poly = (aVec * bVec) * xVec * (bVec * aVec)//leftBiVec * xVec * rightBiVec
     println(poly)
     val polyVec = poly.extractVector()
     for (algVec: AlgebraicPolynom in polyVec){
         println(algVec)
-    }
+    }*/
 }

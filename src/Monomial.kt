@@ -113,4 +113,6 @@ class Monomial() : Multiplyable<Monomial>, Summable<Monomial>, Zeroable, Cloneab
     fun getMatchingAlgebraicPolynom(elem: CliffordMonomial): AlgebraicPolynom = if (clifford.hasAllVariablesEqual(elem)){
         algebraic
     }else throw RuntimeException("Monomial\'s is not $elem")
+
+    fun getCliffordSize() = clifford.size()
 }

@@ -81,4 +81,6 @@ class CliffordMonomial() : Multiplyable<CliffordMonomial>, Cloneable {
         }
         return true
     }
+
+    fun size() = sequence.size
 }

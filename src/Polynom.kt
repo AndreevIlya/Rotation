@@ -76,7 +76,10 @@ class Polynom() : Multiplyable<Polynom>,Summable<Polynom>,Zeroable, Cloneable {
     fun extractVector(): List<AlgebraicPolynom>{
         val vec: MutableList<AlgebraicPolynom> = ArrayList()
         val cliff: MutableList<CliffordMonomial> = ArrayList()
-        val dimension = polynom.size
+        var dimension = 0
+        for (mono: Monomial in this.polynom){
+            if(mono.getCliffordSize() == 1) dimension++
+        }
         var i = 0
         var count = 0
         while (i < dimension) {

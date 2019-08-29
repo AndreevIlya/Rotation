@@ -48,22 +48,23 @@ class Matrix(private val dimension: Int) {
 }
 
 fun main() {
-    val xVec = Matrix(5).makeOrt('x',0)
-    val aVec = Matrix(5).makeVector('a')
-    val bVec = Matrix(5).makeVector('b')
+    val matrix = Matrix(16)
+    val xVec = matrix.makeVector('x')
+    /*val aVec = Matrix(9).makeVector('a')
+    val bVec = Matrix(9).makeVector('b')
     println(aVec*bVec)
     println(bVec*aVec)
-    /*println((aVec*bVec) * (bVec*aVec) - aVec*bVec * bVec*aVec)*/
+    println((aVec*bVec) * (bVec*aVec) - aVec*bVec * bVec*aVec)*/
 
-    val leftBiVec = Matrix(5).makeBiVector('s', true)
-    println(leftBiVec)
-    val rightBiVec = Matrix(5).makeBiVector('s', false)
-    println(rightBiVec)
-    println(leftBiVec * rightBiVec)
-    /*val poly = (aVec * bVec) * xVec * (bVec * aVec)//leftBiVec * xVec * rightBiVec
-    println(poly)
+    val leftBiVec = matrix.makeBiVector('s', true)
+    //println(leftBiVec)
+    val rightBiVec = matrix.makeBiVector('s', false)
+    //println(rightBiVec)
+    //println(leftBiVec * rightBiVec)
+    val poly = /*(aVec * bVec) * xVec * (bVec * aVec)*/leftBiVec * xVec * rightBiVec
+    //println(poly)
     val polyVec = poly.extractVector()
     for (algVec: AlgebraicPolynom in polyVec){
-        println(algVec)
-    }*/
+        println(algVec.extractPolynom(AlgebraicMonomial(Variable('x', 3))))
+    }
 }

@@ -85,4 +85,12 @@ class AlgebraicPolynom() : Multiplyable<AlgebraicPolynom>, Summable<AlgebraicPol
         }
         return polynom
     }
+
+    fun extractPolynom(monomial: AlgebraicMonomial): AlgebraicPolynom{
+        val poly = AlgebraicPolynom()
+        for (mono: AlgebraicMonomial in this.polynom){
+            if(mono.isDividable(monomial)) poly.polynom.add(mono / monomial)
+        }
+        return poly
+    }
 }

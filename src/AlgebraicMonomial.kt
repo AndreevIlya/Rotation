@@ -19,6 +19,18 @@ class AlgebraicMonomial() : Multiplyable<AlgebraicMonomial>,Summable<AlgebraicMo
         return monomial
     }
 
+    operator fun div(elem: AlgebraicMonomial): AlgebraicMonomial{
+        val monomial = clone()
+        monomial.coefficient /= elem.coefficient
+        for (variable: Variable in elem.sequence.keys) {
+            if (monomial.sequence.containsKey(variable)) {
+                monomial.sequence[variable] = monomial.sequence[variable]!! - elem.sequence[variable]!!
+                if (monomial.sequence[variable] == 0) monomial.sequence.remove(variable)
+            } else throw RuntimeException("Exception in algebraic monomials division.")
+        }
+        return monomial
+    }
+
     override operator fun plus(elem: AlgebraicMonomial): AlgebraicMonomial {
         return plusMinus(0,elem)
     }
@@ -99,5 +111,13 @@ class AlgebraicMonomial() : Multiplyable<AlgebraicMonomial>,Summable<AlgebraicMo
         var result = coefficient
         result = 31 * result + sequence.hashCode()
         return result
+    }
+
+    fun isDividable(elem: AlgebraicMonomial): Boolean{
+        var check = true
+        for (variable: Variable in elem.sequence.keys) {
+            check = check && this.sequence.containsKey(variable)
+        }
+        return check
     }
 }

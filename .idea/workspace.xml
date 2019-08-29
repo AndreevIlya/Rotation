@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="1fe5139e-a18b-48b8-9894-be23370faa75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CliffordMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CliffordMonomial.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Matrix.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Variable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Monomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monomial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Polynom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Polynom.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -169,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1566510803383</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Another variable constructor added.">
+      <created>1567102175724</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1567102175724</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -197,7 +208,8 @@
     <MESSAGE value="Clifford monomials aligned correctly." />
     <MESSAGE value="Bugs solved, matrix class started as a big testing environment so far." />
     <MESSAGE value="Clifford base removal from Polynom realised." />
-    <option name="LAST_COMMIT_MESSAGE" value="Clifford base removal from Polynom realised." />
+    <MESSAGE value="Another variable constructor added." />
+    <option name="LAST_COMMIT_MESSAGE" value="Another variable constructor added." />
   </component>
   <component name="masterDetails">
     <states>

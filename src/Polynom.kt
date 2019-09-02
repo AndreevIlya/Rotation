@@ -73,29 +73,12 @@ class Polynom() : Multiplyable<Polynom>,Summable<Polynom>,Zeroable, Cloneable {
         return polynom
     }
 
-    fun extractVector(): List<AlgebraicPolynom>{
-        val vec: MutableList<AlgebraicPolynom> = ArrayList()
-        val cliff: MutableList<CliffordMonomial> = ArrayList()
-        var dimension = 0
-        for (mono: Monomial in this.polynom){
-            if(mono.getCliffordSize() == 1) dimension++
-        }
-        var i = 0
-        var count = 0
-        while (i < dimension) {
-            cliff.add(CliffordMonomial(Variable('H', i)))
-            i++
-        }
-        for (cliffMono: CliffordMonomial in cliff){
-            for (mono: Monomial in polynom){
-                if (mono.hasSameCliffordBase(cliffMono)){
-                    vec.add(mono.getMatchingAlgebraicPolynom(cliffMono))
-                    count++
-                    break
-                }
+    fun extractPolynom(cliff: CliffordMonomial): AlgebraicPolynom{
+        for (mono: Monomial in polynom){
+            if (mono.hasSameCliffordBase(cliff)){
+                return mono.getMatchingAlgebraicPolynom(cliff)
             }
         }
-        if (count == dimension) return vec
-        else throw RuntimeException("Not enough components: $count of $dimension.")
+        throw RuntimeException("Unable to extract polynom with $cliff base.")
     }
 }

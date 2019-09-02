@@ -1,25 +1,42 @@
+import java.io.BufferedWriter
+import java.io.File
+import java.io.FileWriter
+
 class Matrix(private val dimension: Int) {
 
-    fun makeOrt(letter: Char,index: Int): Polynom {
-        val ort = CliffordMonomial(Variable('H', index))
-        val vec = AlgebraicPolynom(AlgebraicMonomial(Variable(letter, index)))
-        return Polynom(Monomial(vec, ort))
+    private val cliffordVector: List<CliffordMonomial> = makeCliffordVector()
+    private val xVec: List<AlgebraicMonomial> = makeVector('x')
+    private val matrix: List<List<AlgebraicPolynom>> = makeMatrix()
+
+    private fun makeCliffordVector(): List<CliffordMonomial>{
+        var i = 0
+        val vec: MutableList<CliffordMonomial> = ArrayList(dimension)
+        while (i < dimension) {
+            vec.add(CliffordMonomial(Variable('H', i)))
+            i++
+        }
+        return vec
     }
 
-    fun makeVector(letter: Char): Polynom {
+    private fun makeVector(letter: Char):  List<AlgebraicMonomial> {
         var i = 0
-        var poly = Polynom()
+        val vec: MutableList<AlgebraicMonomial> = ArrayList(dimension)
         while (i < dimension) {
-            val ort = CliffordMonomial(Variable('H', i))
-            val vec = AlgebraicPolynom(AlgebraicMonomial(Variable(letter, i)))
-            val mono = Polynom(Monomial(vec, ort))
-            poly += mono
+            vec.add(AlgebraicMonomial(Variable(letter, i)))
             i++
+        }
+        return vec
+    }
+
+    private fun makeVectorPolynom(): Polynom {
+        var poly = Polynom()
+        for ((i, mono: AlgebraicMonomial) in xVec.withIndex()){
+            poly += Polynom(Monomial(AlgebraicPolynom(mono), cliffordVector[i]))
         }
         return poly
     }
 
-    fun makeBiVector(letter: Char, pseudo: Boolean): Polynom {
+    private fun makeBiVector(letter: Char, pseudo: Boolean): Polynom {
         var i = 0
         var j: Int
         var poly = Polynom()
@@ -28,14 +45,12 @@ class Matrix(private val dimension: Int) {
         while (i < dimension) {
             j = i + 1
             while (j < dimension) {
-                val ort1 = CliffordMonomial(Variable('H', i))
-                val ort2 = CliffordMonomial(Variable('H', j))
-                val vec = AlgebraicPolynom(AlgebraicMonomial(Variable(letter, "${i}_$j")))
+                val vec = AlgebraicPolynom(AlgebraicMonomial(Variable(letter, "${i}x$j")))
                 val mono = Polynom(
                     Monomial(
                         if (pseudo) vec
                         else -vec,
-                        ort1 * ort2
+                        cliffordVector[i] * cliffordVector[j]
                     )
                 )
                 poly += mono
@@ -45,26 +60,58 @@ class Matrix(private val dimension: Int) {
         }
         return poly
     }
+
+    private fun makeMatrix(): List<List<AlgebraicPolynom>>{
+        val matrix: MutableList<MutableList<AlgebraicPolynom>> = ArrayList(dimension)
+        val xPoly = makeVectorPolynom()
+        val leftPoly = makeBiVector('s', true)
+        val rightPoly = makeBiVector('s', false)
+        val poly = leftPoly * xPoly * rightPoly
+        for (cliff: CliffordMonomial in cliffordVector){
+            val algPoly = poly.extractPolynom(cliff)
+            val matrixRow: MutableList<AlgebraicPolynom> = ArrayList(dimension)
+            for (xMono: AlgebraicMonomial in xVec){
+                matrixRow.add(algPoly.extractPolynom(xMono))
+            }
+            matrix.add(matrixRow)
+        }
+        return matrix
+    }
+
+    override fun toString(): String {
+        val seqString = StringBuilder()
+        seqString.append("Notebook[{\n" +
+                "\n" +
+                "Cell[BoxData[\n" +
+                " RowBox[{\"{\", \n" +
+                "  RowBox[{\n")
+        for ((i, row: List<AlgebraicPolynom>) in matrix.withIndex()) {
+            seqString.append("   RowBox[{\"{\", \n" +
+                    "    RowBox[{")
+            for ((j, item: AlgebraicPolynom) in row.withIndex()) {
+                seqString.append(item.toString())
+                if (j != dimension - 1) seqString.append(", \",\", ")
+                else seqString.append("}], \"}\"}]")
+            }
+            if (i != dimension - 1) seqString.append(", \",\",")
+        }
+        seqString.append("}], \"}\"}]], \"Input\"]}]")
+        return seqString.toString()
+    }
+
+    fun writeToFile(){
+        val file = File("rotation_$dimension.nb")
+        val writer = FileWriter(file, false)
+        val bw = BufferedWriter(writer)
+        bw.write(this.toString())
+        bw.close()
+    }
 }
 
-fun main() {
-    val matrix = Matrix(16)
-    val xVec = matrix.makeVector('x')
-    /*val aVec = Matrix(9).makeVector('a')
-    val bVec = Matrix(9).makeVector('b')
-    println(aVec*bVec)
-    println(bVec*aVec)
-    println((aVec*bVec) * (bVec*aVec) - aVec*bVec * bVec*aVec)*/
-
-    val leftBiVec = matrix.makeBiVector('s', true)
-    //println(leftBiVec)
-    val rightBiVec = matrix.makeBiVector('s', false)
-    //println(rightBiVec)
-    //println(leftBiVec * rightBiVec)
-    val poly = /*(aVec * bVec) * xVec * (bVec * aVec)*/leftBiVec * xVec * rightBiVec
-    //println(poly)
-    val polyVec = poly.extractVector()
-    for (algVec: AlgebraicPolynom in polyVec){
-        println(algVec.extractPolynom(AlgebraicMonomial(Variable('x', 3))))
+fun main(args: Array<String>) {
+    if (args.isNotEmpty() && Integer.parseInt(args[0]) > 1){
+        Matrix(Integer.parseInt(args[0])).writeToFile()
+    } else {
+        Matrix(9).writeToFile()
     }
 }

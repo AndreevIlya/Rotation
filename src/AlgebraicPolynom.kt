@@ -51,17 +51,22 @@ class AlgebraicPolynom() : Multiplyable<AlgebraicPolynom>, Summable<AlgebraicPol
 
     override fun toString(): String {
         val seqString = StringBuilder()
+        seqString.append("RowBox[{\n")
         for ((i, monomial: AlgebraicMonomial) in this.polynom.withIndex()) {
             val monoString = StringBuilder()
             if (monomial.isPositive()){
-                if (i != 0) monoString.append(" + ")
+                if (i != 0) monoString.append("\"+\",")
                 monoString.append(monomial.toString())
             } else {
-                monoString.append(" - ")
+                if (i == 0) monoString.append("RowBox[{\"-\", ")
+                else monoString.append("\"-\",")
                 monoString.append((-monomial).toString())
+                if (i == 0) monoString.append("}]")
             }
+            if (i != polynom.size - 1) monoString.append(", ")
             seqString.append(monoString)
         }
+        seqString.append("}]")
         return seqString.toString()
     }
 

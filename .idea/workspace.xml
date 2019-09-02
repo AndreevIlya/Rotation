@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Rotation:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="1fe5139e-a18b-48b8-9894-be23370faa75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Rotation_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Rotation/META-INF/Rotation.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Rotation/META-INF/Rotation.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicMonomial.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/AlgebraicPolynom.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CliffordMonomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CliffordMonomial.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Matrix.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Matrix.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Monomial.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Monomial.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Polynom.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Polynom.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Variable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Variable.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +45,13 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558281389516" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -67,17 +81,21 @@
     </configuration>
     <configuration name="MatrixKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
       <module name="Rotation" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="3" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="MAIN_CLASS_NAME" value="MatrixKt" />
-      <option name="WORKING_DIRECTORY" />
+      <option name="WORKING_DIRECTORY" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Kotlin.MainKt" />
+      <item itemvalue="Kotlin.MatrixKt" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Kotlin.MatrixKt" />
@@ -180,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1567102175724</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Extract by monomial done.">
+      <created>1567109635274</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1567109635274</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -209,22 +234,18 @@
     <MESSAGE value="Bugs solved, matrix class started as a big testing environment so far." />
     <MESSAGE value="Clifford base removal from Polynom realised." />
     <MESSAGE value="Another variable constructor added." />
-    <option name="LAST_COMMIT_MESSAGE" value="Another variable constructor added." />
+    <MESSAGE value="Extract by monomial done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Extract by monomial done." />
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/Matrix.kt</url>
+          <line>105</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

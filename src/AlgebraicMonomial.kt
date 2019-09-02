@@ -78,16 +78,17 @@ class AlgebraicMonomial() : Multiplyable<AlgebraicMonomial>,Summable<AlgebraicMo
 
     override fun toString(): String {
         val seqString = StringBuilder()
-        if (coefficient != 1) seqString.append("$coefficient\\ ")
+        if (sequence.size > 1) seqString.append("RowBox[{")
+        if (coefficient != 1) seqString.append("\"$coefficient\", \" \", ")
         for ((i, variable: Variable) in sequence.keys.withIndex()) {
             seqString.append(
-                if (sequence[variable] == 1) {
-                    "$variable"
-                } else {
-                    "$variable^${sequence[variable]}"
-                }
+                if (sequence[variable] == 1) "\"$variable\""
+                else "SuperscriptBox[\"$variable\", \"${sequence[variable]}\"]"
             )
-            if (i != sequence.keys.size - 1) seqString.append(" ")
+            if (sequence.size > 1) seqString.append(
+                if (i != sequence.keys.size - 1) ", \" \", "
+                else "}]"
+            )
         }
         return seqString.toString()
     }

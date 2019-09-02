@@ -21,7 +21,7 @@ class Variable(private val letter : Char): Comparable<Variable>{
     override fun toString() : String{
         if (strIndex != "") return "$letter$strIndex"
         //if(index < 10) return "${letter}0$index\\"
-        return "$letter$index\\"
+        return "$letter$index "
     }
 
     override fun equals(other: Any?): Boolean {
